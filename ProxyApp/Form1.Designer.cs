@@ -44,6 +44,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.txtRequestDetails = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listBoxUrls
@@ -51,7 +52,7 @@
             this.listBoxUrls.FormattingEnabled = true;
             this.listBoxUrls.Location = new System.Drawing.Point(12, 252);
             this.listBoxUrls.Name = "listBoxUrls";
-            this.listBoxUrls.Size = new System.Drawing.Size(715, 186);
+            this.listBoxUrls.Size = new System.Drawing.Size(323, 186);
             this.listBoxUrls.TabIndex = 0;
             this.listBoxUrls.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -184,11 +185,22 @@
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
+            // txtRequestDetails
+            // 
+            this.txtRequestDetails.Location = new System.Drawing.Point(352, 252);
+            this.txtRequestDetails.Multiline = true;
+            this.txtRequestDetails.Name = "txtRequestDetails";
+            this.txtRequestDetails.ReadOnly = true;
+            this.txtRequestDetails.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtRequestDetails.Size = new System.Drawing.Size(375, 186);
+            this.txtRequestDetails.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(741, 450);
+            this.Controls.Add(this.txtRequestDetails);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox5);
@@ -231,6 +243,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.TextBox txtRequestDetails;
     }
 }
 
