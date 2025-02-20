@@ -79,15 +79,19 @@ namespace ProxyApp
         // **Request Handling**
         private async Task OnRequest(object sender, SessionEventArgs e)
         {
-            string url = e.HttpClient.Request.Url;
-            Console.WriteLine($"Request to: {url}");
-
+            // Workaround to auto-send HTTPS requests to Honor
+            string requestURL = e.HttpClient.Request.Url;
+            requestURL = requestURL.Replace("HTTPS://", "https://");
+            requestURL = requestURL.Replace(":443", "");
+            Console.WriteLine($"Request to: {requestURL}");
+            e.HttpClient.Request.Url = requestURL;
             var requestHeaders = e.HttpClient.Request.Headers;
-            var requestBody = await e.GetRequestBodyAsString();
+            string requestBody = await e.GetRequestBodyAsString();
 
             StringBuilder details = new StringBuilder();
-            details.AppendLine($"📤 **Request to:** {url}\n");
+            details.AppendLine($"📤 **Request to:** {requestURL}");
             details.AppendLine("🔹 **Request Headers:**");
+
             foreach (var header in requestHeaders)
                 details.AppendLine($"{header.Name}: {header.Value}");
 
@@ -99,7 +103,7 @@ namespace ProxyApp
 
             lock (requestData)
             {
-                requestData[url] = details.ToString();
+                requestData[requestURL] = details.ToString();
             }
 
             await Task.CompletedTask;
