@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listBoxUrls = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.bpkgLabel = new System.Windows.Forms.Label();
+            this.cpkgLbl = new System.Windows.Forms.Label();
+            this.prpkgLbl = new System.Windows.Forms.Label();
+            this.baseVerField = new System.Windows.Forms.TextBox();
+            this.custVerField = new System.Windows.Forms.TextBox();
+            this.preLoadVerField = new System.Windows.Forms.TextBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.fwVer = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.useIndividual = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.listBoxLogs = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -51,6 +51,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxUrls
@@ -72,59 +73,59 @@
             this.label1.Text = "Requests:";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
+            // bpkgLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 98);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Base Package:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            this.bpkgLabel.AutoSize = true;
+            this.bpkgLabel.Location = new System.Drawing.Point(11, 98);
+            this.bpkgLabel.Name = "bpkgLabel";
+            this.bpkgLabel.Size = new System.Drawing.Size(80, 13);
+            this.bpkgLabel.TabIndex = 2;
+            this.bpkgLabel.Text = "Base Package:";
+            this.bpkgLabel.Click += new System.EventHandler(this.label2_Click);
             // 
-            // label3
+            // cpkgLbl
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 127);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Cust Package:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.cpkgLbl.AutoSize = true;
+            this.cpkgLbl.Location = new System.Drawing.Point(11, 127);
+            this.cpkgLbl.Name = "cpkgLbl";
+            this.cpkgLbl.Size = new System.Drawing.Size(77, 13);
+            this.cpkgLbl.TabIndex = 3;
+            this.cpkgLbl.Text = "Cust Package:";
+            this.cpkgLbl.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label4
+            // prpkgLbl
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 156);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Preload Package:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.prpkgLbl.AutoSize = true;
+            this.prpkgLbl.Location = new System.Drawing.Point(11, 156);
+            this.prpkgLbl.Name = "prpkgLbl";
+            this.prpkgLbl.Size = new System.Drawing.Size(92, 13);
+            this.prpkgLbl.TabIndex = 4;
+            this.prpkgLbl.Text = "Preload Package:";
+            this.prpkgLbl.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox1
+            // baseVerField
             // 
-            this.textBox1.Location = new System.Drawing.Point(125, 95);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 20);
-            this.textBox1.TabIndex = 5;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.baseVerField.Location = new System.Drawing.Point(125, 95);
+            this.baseVerField.Name = "baseVerField";
+            this.baseVerField.Size = new System.Drawing.Size(210, 20);
+            this.baseVerField.TabIndex = 5;
+            this.baseVerField.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // custVerField
             // 
-            this.textBox2.Location = new System.Drawing.Point(125, 124);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(210, 20);
-            this.textBox2.TabIndex = 6;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.custVerField.Location = new System.Drawing.Point(125, 124);
+            this.custVerField.Name = "custVerField";
+            this.custVerField.Size = new System.Drawing.Size(210, 20);
+            this.custVerField.TabIndex = 6;
+            this.custVerField.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // textBox3
+            // preLoadVerField
             // 
-            this.textBox3.Location = new System.Drawing.Point(125, 153);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(210, 20);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            this.preLoadVerField.Location = new System.Drawing.Point(125, 153);
+            this.preLoadVerField.Name = "preLoadVerField";
+            this.preLoadVerField.Size = new System.Drawing.Size(210, 20);
+            this.preLoadVerField.TabIndex = 7;
+            this.preLoadVerField.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // checkBox2
             // 
@@ -137,32 +138,32 @@
             this.checkBox2.UseVisualStyleBackColor = true;
             this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // textBox4
+            // fwVer
             // 
-            this.textBox4.Location = new System.Drawing.Point(15, 37);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(320, 20);
-            this.textBox4.TabIndex = 17;
+            this.fwVer.Location = new System.Drawing.Point(15, 37);
+            this.fwVer.Name = "fwVer";
+            this.fwVer.Size = new System.Drawing.Size(320, 20);
+            this.fwVer.TabIndex = 17;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(12, 21);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 13);
+            this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 16;
-            this.label5.Text = "Base Package:";
+            this.label5.Text = "Full FW Version:";
             // 
-            // checkBox1
+            // useIndividual
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(15, 68);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(142, 17);
-            this.checkBox1.TabIndex = 18;
-            this.checkBox1.Text = "Use individual packages";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.useIndividual.AutoSize = true;
+            this.useIndividual.Location = new System.Drawing.Point(15, 68);
+            this.useIndividual.Name = "useIndividual";
+            this.useIndividual.Size = new System.Drawing.Size(142, 17);
+            this.useIndividual.TabIndex = 18;
+            this.useIndividual.Text = "Use individual packages";
+            this.useIndividual.UseVisualStyleBackColor = true;
+            this.useIndividual.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button1
             // 
@@ -225,7 +226,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(401, 65);
+            this.label7.Location = new System.Drawing.Point(402, 53);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 18);
             this.label7.TabIndex = 25;
@@ -235,7 +236,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(401, 88);
+            this.label8.Location = new System.Drawing.Point(402, 76);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 26;
@@ -245,7 +246,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(401, 149);
+            this.label9.Location = new System.Drawing.Point(402, 137);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 28;
@@ -255,17 +256,27 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(401, 126);
+            this.label10.Location = new System.Drawing.Point(402, 114);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(93, 18);
             this.label10.TabIndex = 27;
             this.label10.Text = "Proxy Port:";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(452, 194);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 29;
+            this.button5.Text = "Donate";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 450);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label8);
@@ -276,16 +287,16 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listBoxLogs);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.useIndividual);
+            this.Controls.Add(this.fwVer);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.preLoadVerField);
+            this.Controls.Add(this.custVerField);
+            this.Controls.Add(this.baseVerField);
+            this.Controls.Add(this.prpkgLbl);
+            this.Controls.Add(this.cpkgLbl);
+            this.Controls.Add(this.bpkgLabel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxUrls);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -304,16 +315,16 @@
 
         private System.Windows.Forms.ListBox listBoxUrls;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label bpkgLabel;
+        private System.Windows.Forms.Label cpkgLbl;
+        private System.Windows.Forms.Label prpkgLbl;
+        private System.Windows.Forms.TextBox baseVerField;
+        private System.Windows.Forms.TextBox custVerField;
+        private System.Windows.Forms.TextBox preLoadVerField;
         private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox fwVer;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox useIndividual;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox listBoxLogs;
         private System.Windows.Forms.Label label6;
@@ -324,6 +335,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button button5;
     }
 }
 
