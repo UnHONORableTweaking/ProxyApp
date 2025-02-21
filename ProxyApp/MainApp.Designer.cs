@@ -1,6 +1,6 @@
 ﻿namespace ProxyApp
 {
-    partial class Form1
+    partial class MainApp
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainApp));
             this.listBoxUrls = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bpkgLabel = new System.Windows.Forms.Label();
@@ -52,6 +52,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
+            this.txtRequestDetails = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBoxUrls
@@ -61,7 +63,6 @@
             this.listBoxUrls.Name = "listBoxUrls";
             this.listBoxUrls.Size = new System.Drawing.Size(260, 147);
             this.listBoxUrls.TabIndex = 0;
-            this.listBoxUrls.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -71,7 +72,6 @@
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Requests:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // bpkgLabel
             // 
@@ -81,7 +81,6 @@
             this.bpkgLabel.Size = new System.Drawing.Size(80, 13);
             this.bpkgLabel.TabIndex = 2;
             this.bpkgLabel.Text = "Base Package:";
-            this.bpkgLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // cpkgLbl
             // 
@@ -91,7 +90,6 @@
             this.cpkgLbl.Size = new System.Drawing.Size(77, 13);
             this.cpkgLbl.TabIndex = 3;
             this.cpkgLbl.Text = "Cust Package:";
-            this.cpkgLbl.Click += new System.EventHandler(this.label3_Click);
             // 
             // prpkgLbl
             // 
@@ -101,7 +99,6 @@
             this.prpkgLbl.Size = new System.Drawing.Size(92, 13);
             this.prpkgLbl.TabIndex = 4;
             this.prpkgLbl.Text = "Preload Package:";
-            this.prpkgLbl.Click += new System.EventHandler(this.label4_Click);
             // 
             // baseVerField
             // 
@@ -109,7 +106,6 @@
             this.baseVerField.Name = "baseVerField";
             this.baseVerField.Size = new System.Drawing.Size(210, 20);
             this.baseVerField.TabIndex = 5;
-            this.baseVerField.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // custVerField
             // 
@@ -117,7 +113,6 @@
             this.custVerField.Name = "custVerField";
             this.custVerField.Size = new System.Drawing.Size(210, 20);
             this.custVerField.TabIndex = 6;
-            this.custVerField.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // preLoadVerField
             // 
@@ -125,7 +120,6 @@
             this.preLoadVerField.Name = "preLoadVerField";
             this.preLoadVerField.Size = new System.Drawing.Size(210, 20);
             this.preLoadVerField.TabIndex = 7;
-            this.preLoadVerField.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // checkBox2
             // 
@@ -136,7 +130,6 @@
             this.checkBox2.TabIndex = 15;
             this.checkBox2.Text = "Use alternate authenticaltion (toggle if device is soft-rebranded)";
             this.checkBox2.UseVisualStyleBackColor = true;
-            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // fwVer
             // 
@@ -163,7 +156,6 @@
             this.useIndividual.TabIndex = 18;
             this.useIndividual.Text = "Use individual packages";
             this.useIndividual.UseVisualStyleBackColor = true;
-            this.useIndividual.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // button1
             // 
@@ -173,7 +165,7 @@
             this.button1.TabIndex = 19;
             this.button1.Text = "Setup";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.setupStartButton);
             // 
             // listBoxLogs
             // 
@@ -192,7 +184,6 @@
             this.label6.Size = new System.Drawing.Size(58, 13);
             this.label6.TabIndex = 21;
             this.label6.Text = "Proxy logs:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // button2
             // 
@@ -220,7 +211,6 @@
             this.button4.TabIndex = 24;
             this.button4.Text = "Patch HonorSuite";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label7
             // 
@@ -231,7 +221,6 @@
             this.label7.Size = new System.Drawing.Size(76, 18);
             this.label7.TabIndex = 25;
             this.label7.Text = "Proxy IP:";
-            this.label7.Click += new System.EventHandler(this.label7_Click_1);
             // 
             // label8
             // 
@@ -241,7 +230,6 @@
             this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 26;
             this.label8.Text = "127.0.0.1";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label9
             // 
@@ -271,11 +259,34 @@
             this.button5.Text = "Donate";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // txtRequestDetails
+            // 
+            this.txtRequestDetails.Location = new System.Drawing.Point(571, 37);
+            this.txtRequestDetails.MaxLength = 256000;
+            this.txtRequestDetails.Multiline = true;
+            this.txtRequestDetails.Name = "txtRequestDetails";
+            this.txtRequestDetails.ReadOnly = true;
+            this.txtRequestDetails.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtRequestDetails.Size = new System.Drawing.Size(290, 401);
+            this.txtRequestDetails.TabIndex = 30;
+            this.txtRequestDetails.WordWrap = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(568, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 13);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Request details (press on request):";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 450);
+            this.ClientSize = new System.Drawing.Size(873, 450);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtRequestDetails);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -336,6 +347,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox txtRequestDetails;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -15,37 +15,26 @@ using System.Net.Security;
 
 namespace ProxyApp
 {
-    public partial class Form1 : Form
+    public partial class MainApp : Form
     {
         private readonly ProxyServer proxyServer;
         private readonly ExplicitProxyEndPoint endPoint;
         private readonly Dictionary<string, string> requestData = new Dictionary<string, string>();
 
-        public Form1()
+        public MainApp()
         {
             InitializeComponent();
             proxyServer = new ProxyServer();
-
-            // Ensure proper certificate handling
             proxyServer.CertificateManager.CreateRootCertificate(true);
             proxyServer.CertificateManager.TrustRootCertificate(true);
-
-            // Allow HTTPS interception
             proxyServer.EnableHttp2 = true;
             proxyServer.ForwardToUpstreamGateway = true;
-
-            // Set up certificate validation callback
             proxyServer.ServerCertificateValidationCallback += OnCertificateValidation;
-
-            // Attach event handlers
             proxyServer.BeforeRequest += OnRequest;
             proxyServer.BeforeResponse += OnResponse;
-
-            // Create a proxy endpoint
             var explicitEndPoint = new ExplicitProxyEndPoint(IPAddress.Any, 7777, true);
             explicitEndPoint.BeforeTunnelConnectRequest += OnBeforeTunnelConnectRequest;
             proxyServer.AddEndPoint(explicitEndPoint);
-
             listBoxUrls.SelectedIndexChanged += ListBoxUrls_SelectedIndexChanged;
         }
 
@@ -73,25 +62,36 @@ namespace ProxyApp
         // **Request Handling**
         private async Task OnRequest(object sender, SessionEventArgs e)
         {
-            // Workaround to auto-send HTTPS requests to Honor
             string requestURL = e.HttpClient.Request.Url;
             requestURL = requestURL.Replace("HTTPS://", "https://");
             requestURL = requestURL.Replace(":443", "");
             Console.WriteLine($"Request to: {requestURL}");
             e.HttpClient.Request.Url = requestURL;
+
+            if (requestURL.Contains("CheckNewVersion"))
+            {
+                string xmlResponse = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root><status>1</status></root>";
+                var headers = new Dictionary<string, HttpHeader>
+                    {
+                        { "Content-Type", new HttpHeader("Content-Type", "application/xml;charset=UTF-8") }
+                    };
+                e.Ok(xmlResponse, headers);
+                return;
+            }
+
             var requestHeaders = e.HttpClient.Request.Headers;
             string requestBody = await e.GetRequestBodyAsString();
 
             StringBuilder details = new StringBuilder();
-            details.AppendLine($"📤 **Request to:** {requestURL}");
-            details.AppendLine("🔹 **Request Headers:**");
+            details.AppendLine($"📤 Request to: {requestURL}");
+            details.AppendLine("\n\n🔹 Request Headers:");
 
             foreach (var header in requestHeaders)
                 details.AppendLine($"{header.Name}: {header.Value}");
 
             if (!string.IsNullOrWhiteSpace(requestBody))
             {
-                details.AppendLine("\n📝 **Request Body:**");
+                details.AppendLine("\n\n📝 Request Body:");
                 details.AppendLine(requestBody);
             }
 
@@ -119,15 +119,15 @@ namespace ProxyApp
                     requestData[url] = "";
 
                 details = new StringBuilder(requestData[url]);
-                details.AppendLine($"\n✅ **Response Status:** {statusCode}");
-                details.AppendLine("\n🔸 **Response Headers:**");
+                details.AppendLine($"\n\n✅ Response Status: {statusCode}");
+                details.AppendLine("\n\n🔸 Response Headers:");
 
                 foreach (var header in responseHeaders)
                     details.AppendLine($"{header.Name}: {header.Value}");
 
                 if (!string.IsNullOrWhiteSpace(responseBody))
                 {
-                    details.AppendLine("\n📦 **Response Body:**");
+                    details.AppendLine("\n\n📦 Response Body:");
                     details.AppendLine(responseBody);
                 }
 
@@ -168,7 +168,7 @@ namespace ProxyApp
 
             if (requestData.ContainsKey(url))
             {
-                // txtRequestDetails.Text = requestData[url];
+                txtRequestDetails.Text = requestData[url];
             }
         }
 
@@ -182,62 +182,7 @@ namespace ProxyApp
 
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void setupStartButton(object sender, EventArgs e)
         {
             if (proxyServer.ProxyRunning)
             {
@@ -248,26 +193,6 @@ namespace ProxyApp
             Console.WriteLine("Proxy server started on port 7777...");
             Console.ReadLine();
             listBoxLogs.Items.Add("Proxy server started on port 7777...");
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
