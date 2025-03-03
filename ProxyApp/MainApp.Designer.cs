@@ -202,6 +202,7 @@
             this.button3.TabIndex = 23;
             this.button3.Text = "FirmCatcher";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -269,7 +270,6 @@
             this.txtRequestDetails.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtRequestDetails.Size = new System.Drawing.Size(290, 401);
             this.txtRequestDetails.TabIndex = 30;
-            this.txtRequestDetails.WordWrap = false;
             // 
             // label2
             // 
@@ -280,7 +280,7 @@
             this.label2.TabIndex = 31;
             this.label2.Text = "Request details (press on request):";
             // 
-            // Form1
+            // MainApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -313,7 +313,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainApp";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "HnSuite Proxy";
             this.Load += new System.EventHandler(this.Form1_Load);

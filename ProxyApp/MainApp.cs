@@ -12,6 +12,7 @@ using Titanium.Web.Proxy.Exceptions;
 using System.Net;
 using System.Security.Cryptography.X509Certificates;
 using System.Net.Security;
+using Newtonsoft.Json.Linq;
 
 namespace ProxyApp
 {
@@ -68,17 +69,6 @@ namespace ProxyApp
             Console.WriteLine($"Request to: {requestURL}");
             e.HttpClient.Request.Url = requestURL;
 
-            if (requestURL.Contains("CheckNewVersion"))
-            {
-                string xmlResponse = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><root><status>1</status></root>";
-                var headers = new Dictionary<string, HttpHeader>
-                    {
-                        { "Content-Type", new HttpHeader("Content-Type", "application/xml;charset=UTF-8") }
-                    };
-                e.Ok(xmlResponse, headers);
-                return;
-            }
-
             var requestHeaders = e.HttpClient.Request.Headers;
             string requestBody = await e.GetRequestBodyAsString();
 
@@ -102,7 +92,6 @@ namespace ProxyApp
 
             await Task.CompletedTask;
         }
-
         private async Task OnResponse(object sender, SessionEventArgs e)
         {
             string url = e.HttpClient.Request.Url;
@@ -193,6 +182,11 @@ namespace ProxyApp
             Console.WriteLine("Proxy server started on port 7777...");
             Console.ReadLine();
             listBoxLogs.Items.Add("Proxy server started on port 7777...");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://firmcatcher.thevakhovske.eu.org");
         }
     }
 }
